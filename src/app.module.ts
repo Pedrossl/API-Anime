@@ -2,9 +2,19 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AnimeModule } from './anime/anime.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [AnimeModule],
+  imports: [ TypeOrmModule.forRoot({
+    type: 'mysql',
+    host: 'localhost',
+    port: 3306,
+    username: 'aluno',
+    password: 'senacrs',
+    database: 'test',
+    entities: [],
+    synchronize: true,
+  }),AnimeModule],
   controllers: [AppController],
   providers: [AppService],
 })

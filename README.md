@@ -19,55 +19,42 @@
     <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# API de Lista de Animes
 
-## Description
+Este é um projeto de API de Lista de Animes desenvolvido com NestJS e TypeORM.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Objetivos do Projeto
 
-## Installation
+O projeto tem como objetivo atender aos seguintes critérios:
 
-```bash
-$ npm install
-```
+- Desenvolver 2 CRUDs diferentes.
+- Implementar um sistema de autenticação com criação de sessão.
+- Aplicar validações utilizando DTO.
+- Acesso a um banco de dados utilizando ORM.
 
-## Running the app
+## Funcionalidades
 
-```bash
-# development
-$ npm run start
+1. **CRUD de Animes**
+   - Criação, leitura, atualização e exclusão de informações sobre animes.
 
-# watch mode
-$ npm run start:dev
+2. **CRUD de Usuários**
+   - Criação, leitura, atualização e exclusão de informações dos usuários.
 
-# production mode
-$ npm run start:prod
-```
+3. **Autenticação e Sessão**
+   - Implementação de autenticação de usuários e criação de sessão.
 
-## Test
+## Outros Recursos
 
-```bash
-# unit tests
-$ npm run test
+Além dos requisitos obrigatórios, alguns recursos adicionais podem ser incluídos:
 
-# e2e tests
-$ npm run test:e2e
+- Upload de arquivos.
+- Envio de e-mails.
+- Testes.
+- Medidas de segurança.
 
-# test coverage
-$ npm run test:cov
-```
+## Stack de Tecnologias
 
-## Support
+A stack de tecnologias utilizada no projeto pode seguir a de alguma empresa referência ou ser baseada em outras disciplinas.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).

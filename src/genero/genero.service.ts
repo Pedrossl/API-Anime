@@ -42,13 +42,14 @@ export class GeneroService {
   async remove(id: number) {
     const genero = await this.generoRepository.findOne({ where: { id } });
     if (!genero) {
-      return 'not found';
+      return { msg: 'Genero not found' };
     }
 
     try {
       await this.generoRepository.delete({ id });
     } catch (error) {
-      return { msg: 'Not Found', error };
+      return { msg: `Can't delete this genre, as it's being used`, error };
     }
+    return { msg: 'Deleted', id };
   }
 }

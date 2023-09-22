@@ -41,7 +41,17 @@ export class AnimeService {
     return `This action updates a #${id} anime`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} anime`;
+  async remove(id: number) {
+    const anime = await this.animeRepository.findOne({ where: { id } });
+    if (!anime) {
+      return 'not found';
+    }
+
+    try {
+      await this.animeRepository.delete({ id });
+    } catch (error) {
+      return { msg: 'Not Found', error };
+    }
+    return { msg: 'Deleted', id };
   }
 }

@@ -1,15 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAnimeDto } from './dto/create-anime.dto';
 import { UpdateAnimeDto } from './dto/update-anime.dto';
+import { Anime } from './entities/anime.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Genero } from 'src/genero/entities/genero.entity';
 
 @Injectable()
 export class AnimeService {
-  create(createAnimeDto: CreateAnimeDto) {
-    return 'This action adds a new anime';
+  constructor(
+    @InjectRepository(Anime)
+    private animeRepository: Repository<Anime>,
+    @InjectRepository(Genero)
+    private generoRepository: Repository<Genero>,
+  ) {}
+  async create(createAnimeDto: CreateAnimeDto) {
+    const existeGenero = await this.generoRepository.findOne({
+      where: { id: createAnimeDto.genero_id },
+    });
+    if (!existeGenero) {
+      return 'not found';
+    }
+    const anime = this.animeRepository.create(createAnimeDto);
+    anime.genero = existeGenero;
+    return await this.animeRepository.save(anime);
   }
 
   findAll() {
-    return `This action returns all anime`;
+    return this.animeRepository
+      .createQueryBuilder('anime')
+      .leftJoinAndSelect('anime.genero', 'genero')
+      .getMany();
   }
 
   findOne(id: number) {

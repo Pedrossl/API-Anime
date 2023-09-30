@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateGeneroDto } from './dto/create-genero.dto';
-import { UpdateGeneroDto } from './dto/update-genero.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Genero } from './entities/genero.entity';
 import { Repository } from 'typeorm';
@@ -24,14 +23,14 @@ export class GeneroService {
     return await this.generoRepository.findOne({ where: { id } });
   }
 
-  async update(id: number, updateGeneroDto: UpdateGeneroDto) {
+  async update(id: number, createGeneroDto: CreateGeneroDto) {
     const genero = await this.generoRepository.findOne({ where: { id } });
     if (!genero) {
       return 'not found';
     }
 
     try {
-      await this.generoRepository.update({ id }, updateGeneroDto);
+      await this.generoRepository.update({ id }, createGeneroDto);
     } catch (error) {
       return { msg: 'Not Found', error };
     }

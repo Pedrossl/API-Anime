@@ -3,14 +3,12 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   Put,
 } from '@nestjs/common';
 import { GeneroService } from './genero.service';
 import { CreateGeneroDto } from './dto/create-genero.dto';
-import { UpdateGeneroDto } from './dto/update-genero.dto';
 
 @Controller('genero')
 export class GeneroController {
@@ -33,14 +31,14 @@ export class GeneroController {
 
   @Put(':id')
   async update(
-    @Param('id') id: string,
-    @Body() updateGeneroDto: UpdateGeneroDto,
+    @Param('id') id: number,
+    @Body() createGeneroDto: CreateGeneroDto,
   ) {
-    return await this.generoService.update(+id, updateGeneroDto);
+    return await this.generoService.update(id, createGeneroDto);
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: string) {
-    return await this.generoService.remove(+id);
+  async remove(@Param('id') id: number) {
+    return await this.generoService.remove(id);
   }
 }

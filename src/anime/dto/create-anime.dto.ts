@@ -1,4 +1,5 @@
-import { IsInt, IsString } from 'class-validator';
+import { Min } from '@nestjs/class-validator';
+import { IsInt, IsString, Max } from 'class-validator';
 
 export class CreateAnimeDto {
   @IsString()
@@ -14,6 +15,8 @@ export class CreateAnimeDto {
   episodios: number;
 
   @IsInt()
+  @Min(1)
+  @Max(5)
   nota: number;
 
   @IsInt()

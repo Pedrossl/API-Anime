@@ -6,12 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { AnimeService } from './anime.service';
 import { CreateAnimeDto } from './dto/create-anime.dto';
 import { UpdateAnimeDto } from './dto/update-anime.dto';
 
-@Controller('anime')
+@Controller('animes')
 export class AnimeController {
   constructor(private readonly animeService: AnimeService) {}
 
@@ -25,14 +26,18 @@ export class AnimeController {
     return this.animeService.findAll();
   }
 
-  @Get(':id')
+  /*@Get(':id')
   findOne(@Param('id') id: string) {
     return this.animeService.findOne(+id);
-  }
+  }*/
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAnimeDto: UpdateAnimeDto) {
-    return this.animeService.update(+id, updateAnimeDto);
+  @Patch('/note/:id')
+  updateRating(@Param('id', ParseIntPipe) id: number, @Body() updateAnimeDto: UpdateAnimeDto) {
+   console.log(id);
+   console.log(typeof id);
+   
+   
+    return this.animeService.updateRating(id, updateAnimeDto.nota);
   }
 
   @Delete(':id')

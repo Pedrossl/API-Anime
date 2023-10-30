@@ -33,13 +33,15 @@ export class AnimeService {
       .getMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} anime`;
-  }
 
-  update(id: number, updateAnimeDto: UpdateAnimeDto) {
-    return `This action updates a #${id} anime`;
-  }
+
+async updateRating(id: number, nota: number) : Promise<Anime> {
+const anime = await this.animeRepository.findOne({ where: { id } });
+console.log(anime)
+
+  
+return this.animeRepository.save({ ...anime, nota});
+}
 
   async remove(id: number) {
     const anime = await this.animeRepository.findOne({ where: { id } });

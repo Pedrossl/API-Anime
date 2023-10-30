@@ -10,7 +10,7 @@ import {
 import { GeneroService } from './genero.service';
 import { CreateGeneroDto } from './dto/create-genero.dto';
 
-@Controller('genero')
+@Controller('generos')
 export class GeneroController {
   constructor(private readonly generoService: GeneroService) {}
 

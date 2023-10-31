@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { AnimeModule } from './anime/anime.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GeneroModule } from './genero/genero.module';
+import { UsuarioModule } from './usuario/usuario.module';
+import { AuthModule } from './auth/auth.module';
 
 
 require('dotenv').config();
@@ -22,6 +24,8 @@ require('dotenv').config();
     }),
     AnimeModule,
     GeneroModule,
+    UsuarioModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

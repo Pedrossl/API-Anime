@@ -5,17 +5,20 @@ import { AnimeModule } from './anime/anime.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GeneroModule } from './genero/genero.module';
 
+
+require('dotenv').config();
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'lobatoSQL',
-      password: '1234',
-      database: 'animes',
-      entities: ['dist/**/*.entity{.ts,.js}'],
-      synchronize: true,
+      type: process.env.DB_TYPE as 'mysql',
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
+      entities: [process.env.DB_ENTITIES],
+      synchronize: process.env.DB_SYNCHRONIZE === 'true',
     }),
     AnimeModule,
     GeneroModule,
